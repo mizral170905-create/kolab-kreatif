@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
         }
 
         $people = [
-            ['Nadia Putri', 'nadia@kolabkreatif.test', 'UI/UX Designer', 'Jakarta, Indonesia', ['Figma', 'UI Design', 'Prototyping'], 'Designer produk yang suka merubah ide kompleks jadi pengalaman sederhana.'],
+            ['SystemX Nugroho', 'systemx@kolabkreatif.test', 'UI/UX Designer', 'Jakarta, Indonesia', ['Figma', 'UI Design', 'Prototyping'], 'Kreator digital pria yang suka merubah ide kompleks jadi pengalaman sederhana.', 'systemx', 'https://i.pravatar.cc/300?img=15'],
             ['Raka Pratama', 'raka@kolabkreatif.test', 'Frontend Developer', 'Bandung, Indonesia', ['Vue.js', 'Laravel', 'TypeScript'], 'Fullstack developer dengan fokus pada performa dan detail.'],
             ['Salsa Amelia', 'salsa@kolabkreatif.test', 'Ilustrator', 'Yogyakarta, Indonesia', ['Procreate', 'Karakter', 'Storytelling'], 'Menggambar cerita kecil lewat warna dan karakter.'],
             ['Bagus Setiawan', 'bagus@kolabkreatif.test', 'Fotografer', 'Surabaya, Indonesia', ['Fotografi Produk', 'Lightroom', 'Portrait'], 'Menangkap momen yang sering terlewat.'],
@@ -58,18 +58,18 @@ class DatabaseSeeder extends Seeder
 
         $users = [];
         foreach ($people as $index => $person) {
-            [$name, $email, $expertise, $location, $skills, $bio] = $person;
+            [$name, $email, $expertise, $location, $skills, $bio, $usernameOverride = null, $avatarOverride = null] = $person;
             $users[] = User::updateOrCreate(
                 ['email' => $email],
                 [
                     'name' => $name,
-                    'username' => Str::slug($name, '.'),
+                    'username' => $usernameOverride ?? Str::slug($name, '.'),
                     'password' => Hash::make('password'),
                     'expertise' => $expertise,
                     'skills' => $skills,
                     'bio' => $bio,
                     'location' => $location,
-                    'avatar' => 'https://i.pravatar.cc/300?img='.(($index * 7) + 5),
+                    'avatar' => $avatarOverride ?? 'https://i.pravatar.cc/300?img='.(($index * 7) + 5),
                     'email_verified_at' => now(),
                     'website' => 'https://kolabkreatif.test',
                     'github' => 'https://github.com',

@@ -1,0 +1,19 @@
+# KolabKreatif - file siap unggah untuk InfinityFree
+# Letakkan file ini di: htdocs/.htaccess  (BUKAN di htdocs/public/.htaccess)
+# Aturan ini mengarahkan semua request ke folder public/ tempat index.php Laravel berada.
+# Sumber: https://forum.infinityfree.com/t/htaccess-for-laravel/24518
+
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Hindari pengulangan rewrite jika request sudah berada di dalam /public/
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ /public/$1 [L]
+</IfModule>
+
+# Lindungi berkas sensitif dari akses langsung lewat browser
+<FilesMatch "^\.env|composer\.(json|lock)$|artisan$">
+    Require all denied
+</FilesMatch>

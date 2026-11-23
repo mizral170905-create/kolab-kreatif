@@ -106,7 +106,7 @@ defineProps<{
         >
             <p class="font-bold text-slate-800">Akun demo untuk mencoba:</p>
             <p>
-                <span class="font-semibold">nadia@kolabkreatif.test</span> ·
+                <span class="font-semibold">systemx@kolabkreatif.test</span> ·
                 password: <span class="font-semibold">password</span>
             </p>
         </div>
