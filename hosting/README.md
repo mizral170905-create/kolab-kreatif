@@ -1,6 +1,6 @@
-# Berkas Bantu Hosting InfinityFree
+# Berkas Bantu Hosting
 
-Folder ini hanya berisi berkas yang perlu disalin ke akun hosting.
+Folder ini berisi berkas untuk hosting shared InfinityFree. Untuk Render, gunakan `Dockerfile`, `render.yaml`, dan berkas di folder `docker/` di root repository; panduannya ada di `RENDER.md`.
 
 ## `htdocs/.htaccess`
 
