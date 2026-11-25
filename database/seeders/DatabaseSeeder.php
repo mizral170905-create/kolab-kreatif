@@ -58,7 +58,7 @@ class DatabaseSeeder extends Seeder
 
         $users = [];
         foreach ($people as $index => $person) {
-            [$name, $email, $expertise, $location, $skills, $bio, $usernameOverride = null, $avatarOverride = null] = $person;
+            [$name, $email, $expertise, $location, $skills, $bio, $usernameOverride, $avatarOverride] = array_pad($person, 8, null);
             $users[] = User::updateOrCreate(
                 ['email' => $email],
                 [
