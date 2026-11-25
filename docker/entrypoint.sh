@@ -19,8 +19,7 @@ cd /var/www/html
 [ -L public/storage ] || php artisan storage:link --force
 
 php artisan package:discover --ansi
-php artisan config:cache
-php artisan view:cache
+php artisan optimize
 php artisan migrate --force
 php artisan kolab:seed-if-empty
 
